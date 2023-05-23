@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Spectacles</title>
+    <link rel="stylesheet" href="input.css">
+    <!-- Import the component -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.1.1/model-viewer.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Use it like any other HTML element -->
+    <div class="flex justify-center flex-col h-screen items-center py-4 gap-5">
+        <div id="models" class="w-fit border-2">
+            <model-viewer camera-controls auto-rotate ar id="glasses" class="box"
+                alt="Neil Armstrong's Spacesuit from the Smithsonian Digitization Programs Office and National Air and Space Museum"
+                src="assets/images/model/glass-1.glb"></model-viewer>
+        </div>
+        <div class="controls space-x-4 border-2 gap-4 w-full p-4 flex box !h-auto">
+            <ul class="w-32 space-y-1">
+                <li class="border-b-[2.8px] border-slate-400 py-1 font-medium">
+                    Frames</li>
+                <li class="border-b-[2.8px] border-slate-400 py-1 font-medium">
+                    Lens</li>
+                <li class="border-b-[2.8px] border-slate-400 py-1 font-medium">
+                    Temple</li>
+                <li class="border-b-[2.8px] border-slate-400 py-1 font-medium">
+                    Colours</li>
+            </ul>
+            <div class="w-4/5 space-y-1">
+                <!-- Frames -->
+                <ul class="flex space-x-4 items-center py-1" id="frames">
+                    <li class="py-2 border-[1.5px] rounded-lg border-slate-400"><img
+                            src="assets/images/icons/frame1.jpg" class="block w-10 mx-auto cursor-pointer" alt=""></li>
+                    <li class="py-2 border-[1.5px] rounded-lg border-white"><img src="assets/images/icons/frame2.jpg"
+                            class="block w-10 mx-auto cursor-pointer" alt=""></li>
+                    <li class="py-2 border-[1.5px] rounded-lg border-white"><img src="assets/images/icons/frame3.jpg"
+                            class="block w-10 mx-auto cursor-pointer" alt=""></li>
+                    <li class="py-2 border-[1.5px] rounded-lg border-white"><img src="assets/images/icons/frame4.jpg"
+                            class="block w-10 mx-auto cursor-pointer" alt=""></li>
+                    <li class="py-2 border-[1.5px] rounded-lg border-white"><img src="assets/images/icons/frame5.jpg"
+                            class="block w-10 mx-auto cursor-pointer" alt=""></li>
+                    <li class="py-2 border-[1.5px] rounded-lg border-white"><img src="assets/images/icons/frame6.jpg"
+                            class="block w-10 mx-auto cursor-pointer" alt="">
+                    </li>
+                </ul>
+                <!-- Lens -->
+                <ul class="flex space-x-4 items-center py-1">
+                    <li><span class="w-4 h-4 bg-slate-500 inline-block rounded-full"></span></li>
+                    <li><span class="w-4 h-4 bg-slate-500 inline-block rounded-full"></span></li>
+                    <li><span class="w-4 h-4 bg-slate-500 inline-block rounded-full"></span></li>
+                    <li><span class="w-4 h-4 bg-slate-500 inline-block rounded-full"></span></li>
+                    <li><span class="w-4 h-4 bg-slate-500 inline-block rounded-full"></span></li>
+                    <li><span class="w-4 h-4 bg-slate-500 inline-block rounded-full"></span></li>
+                </ul>
+                <!-- Temple -->
+                <ul class="flex space-x-4 items-center py-1">
+                    <li><span class="w-4 h-4 bg-slate-500 inline-block rounded-full"></span></li>
+                    <li><span class="w-4 h-4 bg-slate-500 inline-block rounded-full"></span></li>
+                    <li><span class="w-4 h-4 bg-slate-500 inline-block rounded-full"></span></li>
+                    <li><span class="w-4 h-4 bg-slate-500 inline-block rounded-full"></span></li>
+                    <li><span class="w-4 h-4 bg-slate-500 inline-block rounded-full"></span></li>
+                    <li><span class="w-4 h-4 bg-slate-500 inline-block rounded-full"></span></li>
+                </ul>
+                <!-- Colours -->
+                <ul class="flex space-x-4 items-center" id="colors">
+                    <li>
+                        <span class="back w-4 h-4 bg-slate-300 inline-block rounded-full"></span>
+                        <span class="fore w-4 h-4 bg-orange-400 -ml-3 inline-block rounded-full"></span>
+                    </li>
+                    <li>
+                        <span class="back w-4 h-4 bg-slate-300 inline-block rounded-full"></span>
+                        <span class="fore w-4 h-4 bg-orange-400 -ml-3 inline-block rounded-full"></span>
+                    </li>
+                    <li>
+                        <span class="back w-4 h-4 bg-slate-300 inline-block rounded-full"></span>
+                        <span class="fore w-4 h-4 bg-orange-400 -ml-3 inline-block rounded-full"></span>
+                    </li>
+                    <li>
+                        <span class="back w-4 h-4 bg-slate-300 inline-block rounded-full"></span>
+                        <span class="fore w-4 h-4 bg-orange-400 -ml-3 inline-block rounded-full"></span>
+                    </li>
+                    <li>
+                        <span class="back w-4 h-4 bg-slate-300 inline-block rounded-full"></span>
+                        <span class="fore w-4 h-4 bg-orange-400 -ml-3 inline-block rounded-full"></span>
+                    </li>
+                    <li>
+                        <span class="back w-4 h-4 bg-slate-300 inline-block rounded-full"></span>
+                        <span class="fore w-4 h-4 bg-orange-400 -ml-3 inline-block rounded-full"></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let glasses = document.getElementById('glasses')
+        let modelUrls = ["assets/images/model/glass-1.glb", "assets/images/model/glass-3.glb"]
+
+        // Change Frames
+        let frames = document.getElementById('frames').children
+        for (let i = 0; i < frames.length; i++) {
+            frames[i].addEventListener('click', () => {
+                // Inactive all frames
+                for (let j = 0; j < frames.length; j++) {
+                    frames[j].classList.replace('border-slate-400', 'border-white')
+                }
+                frames[i].classList.replace('border-white', 'border-slate-400')
+                glasses.src = modelUrls[i]
+            })
+        }
+    </script>
+</body>
+
+</html>
