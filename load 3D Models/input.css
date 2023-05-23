@@ -1,7 +1,0 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-.box {
-  @apply w-[600px] h-[420px] lg:w-[968px] xl:w-[1024px] 2xl:w-[1280px] 2xl:h-[540px];
-}
