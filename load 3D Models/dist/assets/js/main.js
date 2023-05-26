@@ -1,7 +1,8 @@
 let glasses = document.getElementById('glasses')
 let modelUrls = ["assets/model/glass-1.glb", "assets/model/glass-2.glb"]
+let posterUrls = ["assets/model/poster/glass-poster-1.webp", "assets/model/poster/glass-poster-2.webp"]
 
-// Change Frames
+// ========= Change Frames
 let frames = document.getElementById('frames').children
 for (let i = 0; i < frames.length; i++) {
     frames[i].addEventListener('click', () => {
@@ -13,3 +14,36 @@ for (let i = 0; i < frames.length; i++) {
         glasses.src = modelUrls[i]
     })
 }
+
+// ========= Change Colours
+let colors = document.querySelector('#color-controls')
+colors.addEventListener('click', (event) => {
+    const colorString = event.target.dataset.color;
+    const [material] = glasses.model.materials;
+    material.pbrMetallicRoughness.setBaseColorFactor(colorString);
+})
+
+// ========= Change and Create Texure
+const modelViewerTexture = document.querySelector("model-viewer#glasses");
+
+modelViewerTexture.addEventListener("load", () => {
+
+    let textures = document.querySelector('#normals2')
+    const material = modelViewerTexture.model.materials[0];
+
+    const createAndApplyTexture = async (channel, event) => {
+        if (event.target.value == "None") {
+            // Clears the texture.
+            material[channel].setTexture(null);
+        } else if (event.target.value) {
+            // Creates a new texture.
+            const texture = await modelViewerTexture.createTexture(event.target.value);
+            // Set the texture name
+            material[channel].setTexture(texture);
+        }
+    }
+
+    textures.addEventListener('click', (event) => {
+        createAndApplyTexture('normalTexture', event);
+    });
+});
