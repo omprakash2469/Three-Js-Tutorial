@@ -29,21 +29,29 @@ const modelViewerTexture = document.querySelector("model-viewer#glasses");
 modelViewerTexture.addEventListener("load", () => {
 
     let textures = document.querySelector('#normals2')
-    const material = modelViewerTexture.model.materials[0];
 
     const createAndApplyTexture = async (channel, event) => {
-        if (event.target.value == "None") {
-            // Clears the texture.
-            material[channel].setTexture(null);
-        } else if (event.target.value) {
-            // Creates a new texture.
-            const texture = await modelViewerTexture.createTexture(event.target.value);
-            // Set the texture name
+        const texture = await modelViewerTexture.createTexture(event.target.value);
+        const material = modelViewerTexture.model.materials[0];
+
+        if (channel.includes('base') || channel.includes('metallic')) {
+            material.pbrMetallicRoughness[channel].setTexture(texture);
+        } else {
             material[channel].setTexture(texture);
         }
+
+        // if (event.target.value == "None") {
+        //     // Clears the texture.
+        //     material[channel].setTexture(null);
+        // } else if (event.target.value) {
+        //     // Creates a new texture.
+        //     const texture = await modelViewerTexture.createTexture(event.target.value);
+        //     // Set the texture name
+        //     material[channel].setTexture(texture);
+        // }
     }
 
     textures.addEventListener('click', (event) => {
-        createAndApplyTexture('normalTexture', event);
+        createAndApplyTexture('baseColorTexture', event);
     });
 });
